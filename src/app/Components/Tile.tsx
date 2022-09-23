@@ -18,7 +18,7 @@ export function SideMenuTile({ imageUrl, price, title, itsToFavorite, trashClick
     >
       <img src={imageUrl} alt={`Imagem do filme ${title}`} className="w-12 h-12 object-contain rounded-sm" />
       <p className="truncate text-xs text-left flex-grow">
-        {title.length > 20 ? title.substring(0, 14).concat("...") : title}
+        {title.length > 15 ? title.substring(0, 14).concat("...") : title}
       </p>
       <p className="px-5">1</p>
       <p className="px-5">{currencyFormatter(price)}</p>

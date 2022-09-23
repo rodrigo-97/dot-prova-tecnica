@@ -29,8 +29,6 @@ export function FavoritesProvider({ children }: Props) {
     return movies.length
   }
 
-  console.log(movies)
-
   function addMovie(movie: Movie) {
     if (!movies.some((currentMovie) => currentMovie.id === movie.id)) {
       setMovies([...movies, movie])

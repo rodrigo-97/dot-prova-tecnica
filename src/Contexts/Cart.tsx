@@ -46,9 +46,10 @@ export function CartProvider({ children }: Props) {
     toast.success("Filme removido do carrinho!")
   }
 
-  function getSubtotal(): number {
-    const subtotal: any = movies.reduce((c: any, p: any) => c.popularity + p.popularity)
-    return subtotal
+  function getSubtotal() {
+    const moviePrices = movies.map((movie) => movie.vote_average)
+    const subTotal = moviePrices && moviePrices.reduce((current, previous) => Number(current) + Number(previous), 0)
+    return subTotal ?? 0
   }
 
   function getCartMovies() {
@@ -57,6 +58,7 @@ export function CartProvider({ children }: Props) {
 
   function saveInLocalStorage() {
     localStorage.setItem("APP_CART", JSON.stringify(movies))
+
   }
 
   useMemo(() => {
