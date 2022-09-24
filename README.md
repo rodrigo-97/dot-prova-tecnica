@@ -1,19 +1,6 @@
 
 # Prova técnica DOT
 
-
-
-
-## Stack utilizada
-
-**Front-end:** React, ViteJs, TailwindCSS
-
-
-# Prova técnica DOT
-
-
-
-
 ## Stack utilizada
 
 **Front-end:** React, ViteJs, TailwindCSS
