@@ -5,7 +5,7 @@ import { Link } from "./Link"
 import { SideMenuTile } from "./Tile"
 
 export function CartSideContent() {
-  const { getCartMovies, clearCart, deleteMovie, getSubtotal } = useCart()
+  const { getCartMovies, clearCart, deleteMovie, getSubtotal, getCartCount } = useCart()
   const movies = getCartMovies && getCartMovies()
 
   return (
@@ -44,7 +44,10 @@ export function CartSideContent() {
           <p className="text-xl">Total:</p>
           <p className="text-2xl font-bold">{currencyFormatter(getSubtotal())}</p>
         </div>
-        <Button>
+        <Button
+          disabled={!(getCartCount() > 0)}
+          onClick={() => alert("Asas")}
+        >
           Finalizar Compra
         </Button>
       </div>

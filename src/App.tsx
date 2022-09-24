@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import { Input } from './app/Components/Input'
-import { MovieCard } from './app/Components/MovieCard'
 import { Navbar } from './app/Components/Navbar'
 import { Movie } from './app/Models/Movie'
+import { Checkout } from './app/Pages/Checkout'
+import { Home } from './app/Pages/Home'
 import { getMovies } from './app/Services/Movies'
-import NotFound from './assets/netflix.svg'
 
 function App() {
   const [movies, setMovies] = useState<Array<Movie>>([])
@@ -98,54 +99,18 @@ function App() {
           />
         }
       />
-
-      <section
-        className='flex flex-wrap justify-center gap-5 mx-10 lg:mx-20 my-5 transition-all ease-in-out duration-300'
-      >
-        {
-          (!!movies && search === "") && movies.map((movie, index) => {
-            return (
-              <MovieCard
-                key={`${movie.id}_${index}`}
-                id={movie.id}
-                genre_ids={movie.genre_ids}
-                title={movie.title}
-                vote_average={movie.vote_average}
-                poster_path={movie.poster_path}
-              />
-            )
-          })
-        }
-        {
-          (!!filteredMovies && search !== "") && filteredMovies.map((movie, index) => {
-            return (
-              <MovieCard
-                key={`${movie.id}_${index}`}
-                id={movie.id}
-                genre_ids={movie.genre_ids}
-                title={movie.title}
-                vote_average={movie.vote_average}
-                poster_path={movie.poster_path}
-              />
-            )
-          })
-        }
-        {
-          ((movies.length === 0 && search === "") || (filteredMovies.length === 0 && search !== "")) && (
-            <div className='text-center'>
-              <img
-                src={NotFound}
-                className="h-[450px] mb-10"
-                alt="Imagem do logo da Netflix representando que não possui nenhum filme listado"
-              />
-              <p>Não foi encontrado nenhum filme com o termo <b>{search}</b>.</p>
-              <p>Tente pesquisar usando um termo diferente.</p>
-            </div>
-          )
-        }
-      </section>
-
-      <div id="ward" className='h-96' />
+      <Routes>
+        <Route path=''>
+          <Route index element={
+            <Home
+              filteredMovies={filteredMovies}
+              movies={movies}
+              search={search}
+            />}
+          />
+          <Route path='checkout' element={<Checkout />} />
+        </Route>
+      </Routes>
     </div>
   )
 }
