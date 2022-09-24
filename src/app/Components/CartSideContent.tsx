@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { currencyFormatter } from "../../helpers/currencyFormatter"
 import { useCart } from "../../Hooks/useCart"
 import { Button } from "./Button"
@@ -7,6 +8,7 @@ import { SideMenuTile } from "./Tile"
 export function CartSideContent() {
   const { getCartMovies, clearCart, deleteMovie, getSubtotal, getCartCount } = useCart()
   const movies = getCartMovies && getCartMovies()
+  const navigate = useNavigate()
 
   return (
     <>
@@ -46,7 +48,7 @@ export function CartSideContent() {
         </div>
         <Button
           disabled={!(getCartCount() > 0)}
-          onClick={() => alert("Asas")}
+          onClick={() => navigate('checkout')}
         >
           Finalizar Compra
         </Button>

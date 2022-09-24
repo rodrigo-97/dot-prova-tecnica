@@ -1,5 +1,6 @@
 import { Heart, ShoppingCart } from "phosphor-react";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Portrait from '../../assets/streamming.svg'
 import { useCart } from "../../Hooks/useCart";
 import { CartSideContent } from "./CartSideContent";
@@ -14,13 +15,18 @@ export function Navbar({ searchInput }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const [currentSideMenu, setCurrentSideMenu] = useState<"favorites" | "cart" | null>(null)
   const { getCartCount } = useCart()
-
+  const navigate = useNavigate()
   const toggle = () => setIsOpen(!isOpen)
 
   return (
     <>
       <div id="navbar" className="bg-[#8DD7CF] min-h-16 py-2 px-5 md:px-20 flex items-center justify-between flex-wrap">
-        <img src={Portrait} alt="Logo com montanhas ao fundo no tom de roxo" className="h-[50px] hidden md:block" />
+        <img
+          src={Portrait}
+          alt="Logo com montanhas ao fundo no tom de roxo"
+          className="h-[50px] hidden md:block hover:cursor-pointer"
+          onClick={() => navigate('')}
+        />
         {searchInput}
         <div className="flex space-x-3 mt-5 md:mt-0">
           <Heart

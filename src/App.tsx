@@ -1,3 +1,4 @@
+import { MagnifyingGlass } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Input } from './app/Components/Input'
@@ -55,7 +56,7 @@ function App() {
       }
     })
 
-    intersectionObserver.observe(document.querySelector("#ward")!)
+    intersectionObserver.observe(document.querySelector("#ward")! || document.querySelector("#root")!)
 
     return () => intersectionObserver.disconnect()
   }, []);
@@ -96,6 +97,7 @@ function App() {
             onFocus={() => setSearchFocus(true)}
             onBlur={() => setSearchFocus(false)}
             placeholder="Pesquisa"
+            icon={MagnifyingGlass}
           />
         }
       />

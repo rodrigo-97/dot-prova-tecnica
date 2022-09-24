@@ -1,9 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Input } from '../Components/Input'
 import { MovieCard } from '../Components/MovieCard'
-import { Navbar } from '../Components/Navbar'
 import { Movie } from '../Models/Movie'
-import { getMovies } from '../Services/Movies'
 
 import NotFound from '../../assets/netflix.svg'
 
